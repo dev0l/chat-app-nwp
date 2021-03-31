@@ -1,5 +1,5 @@
 # Dev Rules
-#colab/
+colab/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
