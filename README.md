@@ -2,22 +2,19 @@
 A chat application with nwp (next word prediction) using Python, Sanic, SQLite, Html, Css, Javascript
 
 ### Use either python or py depending on your system
-
 e.g:
-py -m ...
-
+- py -m ...
 or
-
-python -m ...
+- python -m ...
 
 ### Virtual Enironment
 - py -m venv venv
 
 To activate venv:
-env/Scripts/activate.bat
+- env/Scripts/activate.bat
 
 To deactivate venv:
-deactivate
+- deactivate
 
 ### Server
 - py -m pip install sanic
