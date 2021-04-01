@@ -12,10 +12,10 @@ or
 - py -m venv venv
 
 To activate venv:
-- env/Scripts/activate.bat
+- venv/Scripts/activate.bat
 
 To deactivate venv:
-- deactivate
+- venv/Scripts/deactivate.bat
 
 ### Server:
 - py -m pip install sanic
