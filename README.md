@@ -3,7 +3,9 @@ A chat application with nwp (next word prediction) using Python, Sanic, SQLite, 
 
 ### Use either python or py depending on your system:
 - py -m ...
+
 or
+
 - python -m ...
 
 ### Virtual Enironment:
