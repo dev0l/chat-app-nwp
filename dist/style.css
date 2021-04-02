@@ -12,6 +12,7 @@ input {
 }
 
 input[type=text] {
+  /* position: fixed; */
   background-color: #f1f1f1;
   width: 100%;
 }
@@ -20,3 +21,31 @@ input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
 }
+
+/* Switch between Models/Inputs */
+
+#switch-btn {
+  /* position: relative; */
+  top: 50px;
+}
+
+#gpt {
+  visibility: visible
+}
+
+#gpt.hide {
+  visibility: hidden;
+}
+
+#other {
+  visibility: hidden;
+}
+
+#other.show {
+  visibility: visible;
+}
+
+/* h2 {
+  position: relative;
+  top: 50px;
+} */

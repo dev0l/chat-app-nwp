@@ -5,21 +5,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="./style.css">
   <title>Test AI prediction</title>
 </head>
 
 <body>
 
-  <input id="new-message" type="text" required placeholder="message.." autocomplete="off">
+  <!-- MODEL TESTING -->
 
-  <h2>Prediction Testing</h2>
+  <h2>Model Test</h2>
+
+  <div class="ui-widget">
+    <input type="text" id="gpt" placeholder="gpt">
+    <input type="text" id="other" placeholder="other">
+
+    <!-- For manual autocomplete with list: -->
+
+    <!-- <ul>
+      <li id="listItem1"></li>
+      <li id="listItem2"></li>
+      <li id="listItem3"></li>
+      <li id="listItem4"></li>
+      <li id="listItem5"></li>
+    </ul> -->
+
+  </div>
+
+  <button id="switch-btn">Switch</button>
+
+  <h3>Predictions:</h3>
 
   <h4 id="prediction"></h4>
+
+  <!-- AUTOCOMPLETE TESTING -->
+
+  <hr>
+
+  <h2>Autocomplete Test</h2>
+
+  <div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="tags">
+  </div>
+
+  <!-- Scripts -->
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
   <script src="main.js"></script>
 
 </body>

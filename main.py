@@ -1,6 +1,7 @@
 from sanic import Sanic, response as res
 from sanic.exceptions import NotFound
-from gpt2 import predict
+from gpt import predict
+from other import predicts
 
 app = Sanic(__name__)
 
@@ -13,6 +14,15 @@ async def predict_results(req):
   values = req.json
   prediction = predict(values['text'])
   print(prediction)
+
+  return res.json(prediction)
+
+@app.post('/api/predictOther')
+async def predict_results(req):
+
+  values = req.json
+  prediction = predicts(values['text'])
+  # print(prediction)
 
   return res.json(prediction)
 
