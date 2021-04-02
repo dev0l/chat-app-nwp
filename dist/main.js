@@ -1,4 +1,4 @@
-$('#new-message').keyup(async function() {
+$('#new-message').keyup(async function () {
   let textToPredict = $('#new-message').val()
 
   let testValues = {
@@ -13,6 +13,8 @@ $('#new-message').keyup(async function() {
   let prediction = await res.json()
 
   $('#prediction').html(`
-  Text to predict: <em>${prediction['text_to_predict']}</em>
-`)
+  <em>${prediction['suggestions']}</em>
+  `)
+  
+  console.log("this is" + prediction['suggestions'])
 })

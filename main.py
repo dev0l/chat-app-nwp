@@ -4,7 +4,6 @@ from gpt2 import predict
 
 app = Sanic(__name__)
 
-
 # When we navigate to /api/predict we have to pass in two values (age, income) which will then be packaged as 
 # json (strings) and later we can access this json in our predict_values function
 @app.post('/api/predict')
@@ -13,7 +12,7 @@ async def predict_results(req):
   # we do this with req.json
   values = req.json
   prediction = predict(values['text'])
-  print('prediction says:', prediction)
+  print(prediction)
 
   return res.json(prediction)
 
@@ -26,3 +25,4 @@ async def ignore_404s(req, err):
 
 if __name__ == "__main__":
   app.run(port=8000)
+  
