@@ -16,5 +16,5 @@ $('#new-message').keyup(async function () {
   <em>${prediction['suggestions']}</em>
   `)
   
-  console.log("this is" + prediction['suggestions'])
+  console.log(prediction['suggestions'])
 })
