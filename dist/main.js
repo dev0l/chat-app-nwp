@@ -76,10 +76,10 @@ $('#other').keyup(async function () {
 
 $( function() {
   var availableTags = [
-    " ActionScript",
-    " AppleScript ",
-    "Asp ",
-    "BASIC ",
+    "ActionScript",
+    "AppleScript",
+    "Asp",
+    "BASIC",
     "C",
     "C++",
     "Clojure",
