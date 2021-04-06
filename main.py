@@ -1,19 +1,59 @@
+import os
 from sanic import Sanic, response as res
 from sanic.exceptions import NotFound
+from sanic.websocket import ConnectionClosed
+import json
+import copy
+from database import get_messages, post_message
 from gpt import predict
 from other import predicts
 
-app = Sanic(__name__)
+app = Sanic('app')
 
-# When we navigate to /api/predict we have to pass in two values (age, income) which will then be packaged as 
-# json (strings) and later we can access this json in our predict_values function
-@app.post('/api/predict')
+# list of connected clients
+clients = set()
+
+async def broadcast(message):
+  # must iterate a copy of the clients set
+  # because the loop gets inconsistent if removing
+  # an element while iterating
+  for client in copy.copy(clients):
+    try: 
+      await client.send(message)
+    except ConnectionClosed:
+      # remove client from list if disconnected
+      clients.remove(client)
+
+@app.websocket('/ws')
+async def websockets(req, ws):
+  # add connected client to list
+  clients.add(ws)
+
+  while True:
+    # wait to receive message from client
+    data = await ws.recv()
+    data = json.loads(data) # parse json
+
+    # save message to db
+    data['id'] = await post_message(data)
+
+    print(data)
+
+    data = json.dumps(data) # stringify dict
+
+    # broadcast message to all clients
+    await broadcast(data)
+
+@app.get('/rest/messages')
+async def messages(req):
+  return res.json(await get_messages())
+
+@app.post('/api/predictGpt')
 async def predict_results(req):
-  # we need to unpackage the json file so we can get initial values being passet from frontend.
-  # we do this with req.json
+
   values = req.json
-  prediction = predict(values['text'])
-  print(prediction)
+  prediction = predict(values['pText'])
+  # print(prediction)
 
   return res.json(prediction)
 
@@ -21,18 +61,17 @@ async def predict_results(req):
 async def predict_results(req):
 
   values = req.json
-  prediction = predicts(values['text'])
+  prediction = predicts(values['pText'])
   # print(prediction)
 
   return res.json(prediction)
 
-# When we navigate to '/' - serve the dist folder
 app.static('/', './dist')
 
 @app.exception(NotFound)
-async def ignore_404s(req, err):
-  return await res.file('./dist/index.html')
+async def ignore_404s(request, exception):
+    return await res.file('./dist/index.html')
 
-if __name__ == "__main__":
-  app.run(port=8000)
-  
+if __name__ == '__main__':
+  # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+  app.run(host='localhost', port=int(os.environ.get("PORT", 5000)))

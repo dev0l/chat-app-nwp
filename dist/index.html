@@ -3,51 +3,30 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>ChatApp!</title>
+  <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="./style.css">
-  <title>Test AI prediction</title>
 </head>
 
 <body>
+  <h1>ChatApp!</h1>
 
-  <!-- MODEL TESTING -->
+  <form>
+    <input id="username" type="text" placeholder="name">
+    <input id="gpt" class="new-message" type="text" placeholder="GPT-2: message..">
+    <input id="other" class="new-message" type="text" placeholder="Other: message..">
+    <button>Send</button>
+  </form>
 
-  <h2>Model Test</h2>
+  <button id="switch-btn">Toggle Model</button>
 
-  <div class="ui-widget">
-    <input type="text" id="gpt" placeholder="gpt">
-    <input type="text" id="other" placeholder="other">
-
-    <!-- For manual autocomplete with list: -->
-
-    <!-- <ul>
-      <li id="listItem1"></li>
-      <li id="listItem2"></li>
-      <li id="listItem3"></li>
-      <li id="listItem4"></li>
-      <li id="listItem5"></li>
-    </ul> -->
-
-  </div>
-
-  <button id="switch-btn">Switch</button>
-
-  <h3>Predictions:</h3>
+  <h4>Predictions:</h4>
 
   <h4 id="prediction"></h4>
 
-  <!-- AUTOCOMPLETE TESTING -->
-
-  <hr>
-
-  <h2>Autocomplete Test</h2>
-
-  <div class="ui-widget">
-    <label for="tags">Tags: </label>
-    <input id="tags">
-  </div>
+  <div id="messages"></div>
 
   <!-- Scripts -->
 
@@ -55,9 +34,8 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-  <script src="main.js"></script>
 
+  <script src="./main.js"></script>
 </body>
 
 </html>

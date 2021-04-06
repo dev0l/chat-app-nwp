@@ -17,10 +17,5 @@ To activate venv:
 To deactivate venv:
 - venv/Scripts/deactivate.bat
 
-### Server:
-- py -m pip install sanic
-
-### GPT-2:
-- py -m pip install torch
-- py -m pip install next-word-prediction
-- py -m pip install pytorch-transformers
+### Dependencies:
+- py -m pip install -r requirements.txt
