@@ -23,7 +23,8 @@ async def broadcast(message):
     except ConnectionClosed:
       # remove client from list if disconnected
       clients.remove(client)
-
+# @app.websocket('/ws/<model:string>')
+# async def websockets(req, model:str):
 @app.websocket('/ws')
 async def websockets(req, ws):
   # add connected client to list
