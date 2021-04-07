@@ -57,6 +57,8 @@ async def predict_results(req):
 
   return res.json(prediction)
 
+# Do we need different URLS based on Model? Use variable at the end of URL?
+
 @app.post('/api/predictOther')
 async def predict_results(req):
 

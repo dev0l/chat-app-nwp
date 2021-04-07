@@ -19,3 +19,6 @@ To deactivate venv:
 
 ### Dependencies:
 - py -m pip install -r requirements.txt
+
+### Run Application:
+py main.py

@@ -88,7 +88,9 @@ switchBtn.addEventListener('click', toggleModel);
 function toggleModel() {
   if (!showOther) {
     other.classList.add('show')
+    other.classList.add('new-message')
     gpt.classList.add('hide')
+    gpt.classList.remove('new-message')
 
     $("#gpt, #other").val("");
     $('#prediction').html(`
@@ -96,9 +98,12 @@ function toggleModel() {
 
     // Set Model State
     showOther = true;
+    
   } else {
+    other.classList.remove('new-message')
     other.classList.remove('show')
     gpt.classList.remove('hide')
+    gpt.classList.add('new-message')
 
     $("#gpt, #other").val("");
     $('#prediction').html(`
