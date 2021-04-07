@@ -23,8 +23,7 @@ async def broadcast(message):
     except ConnectionClosed:
       # remove client from list if disconnected
       clients.remove(client)
-# @app.websocket('/ws/<model:string>')
-# async def websockets(req, model:str):
+
 @app.websocket('/ws')
 async def websockets(req, ws):
   # add connected client to list
@@ -58,17 +57,6 @@ async def predict_results(req):
 
   return res.json(prediction)
 
-# Do we need different URLS based on Model? Use variable at the end of URL?
-
-# @app.post('/api/predictOther')
-# async def predict_results(req):
-
-#   values = req.json
-#   prediction = predicts(values['text'])
-#   # print(prediction)
-
-#   return res.json(prediction)
-
 app.static('/', './dist')
 
 @app.exception(NotFound)
@@ -77,5 +65,4 @@ async def ignore_404s(request, exception):
 
 if __name__ == '__main__':
   # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-  # app.run(host='localhost', port=int(os.environ.get("PORT", 5000)))
-  app.run(auto_reload=True, host='localhost', port=int(os.environ.get("PORT", 5000)))
+  app.run(host='localhost', port=int(os.environ.get("PORT", 5000)))

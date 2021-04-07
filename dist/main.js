@@ -79,38 +79,6 @@ form.addEventListener('submit', e => {
 
 username.addEventListener('keyup', () => (localStorage['username'] = username.value))
 
-// Toggle Model
-
-let showOther = false;
-
-switchBtn.addEventListener('click', toggleModel);
-
-// function toggleModel() {
-//   if (!showOther) {
-//     other.classList.add('show')
-//     gpt.classList.add('hide')
-
-//     $("#gpt, #other").val("");
-//     $('#prediction').html(`
-//     `)
-
-//     // Set Model State
-//     showOther = true;
-    
-//   } else {
-//     other.classList.remove('show')
-//     gpt.classList.remove('hide')
-
-//     $("#gpt, #other").val("");
-//     $('#prediction').html(`
-//     `)
-
-//     // Set Model State
-//     showOther = false;
-
-//   }
-// }
-
 // First Model (GPT-2)
 
 $(gpt).keyup(async function () {
@@ -138,7 +106,7 @@ $(gpt).keyup(async function () {
 //   let textToPredict = $(other).val()
 
 //   let predictions = {
-//     pText: textToPredict
+//     text: textToPredict
 //   }
 
 //   let res = await fetch('/api/predictOther', {
@@ -152,13 +120,3 @@ $(gpt).keyup(async function () {
 //   <em>${prediction['suggestions']}</em>
 //   `)
 // });
-
-// document.getElementById('buttons')
-// .addEventListener('click', event => { // Step 2
-//   if (event.target.className === 'buttonClass') { // Step 3
-//     $(gpt).val( $(gpt.val() + clickedWord) );
-//     // console.log('Click!');s
-//   }
-// });
-
-

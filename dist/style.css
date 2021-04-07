@@ -53,23 +53,3 @@ input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
 }
-
-/* #switch-btn {
-  top: 50px;
-}
-
-#gpt {
-  visibility: visible
-}
-
-#gpt.hide {
-  visibility: hidden;
-}
-
-#other {
-  visibility: hidden;
-}
-
-#other.show {
-  visibility: visible;
-} */
