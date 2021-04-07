@@ -153,12 +153,12 @@ $(gpt).keyup(async function () {
 //   `)
 // });
 
-document.getElementById('buttons')
-.addEventListener('click', event => { // Step 2
-  if (event.target.className === 'buttonClass') { // Step 3
-    $(gpt).val( $(gpt.val() + clickedWord) );
-    // console.log('Click!');s
-  }
-});
+// document.getElementById('buttons')
+// .addEventListener('click', event => { // Step 2
+//   if (event.target.className === 'buttonClass') { // Step 3
+//     $(gpt).val( $(gpt.val() + clickedWord) );
+//     // console.log('Click!');s
+//   }
+// });
 
 
