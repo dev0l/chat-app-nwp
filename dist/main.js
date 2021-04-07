@@ -85,35 +85,31 @@ let showOther = false;
 
 switchBtn.addEventListener('click', toggleModel);
 
-function toggleModel() {
-  if (!showOther) {
-    other.classList.add('show')
-    other.classList.add('new-message')
-    gpt.classList.add('hide')
-    gpt.classList.remove('new-message')
+// function toggleModel() {
+//   if (!showOther) {
+//     other.classList.add('show')
+//     gpt.classList.add('hide')
 
-    $("#gpt, #other").val("");
-    $('#prediction').html(`
-    `)
+//     $("#gpt, #other").val("");
+//     $('#prediction').html(`
+//     `)
 
-    // Set Model State
-    showOther = true;
+//     // Set Model State
+//     showOther = true;
     
-  } else {
-    other.classList.remove('new-message')
-    other.classList.remove('show')
-    gpt.classList.remove('hide')
-    gpt.classList.add('new-message')
+//   } else {
+//     other.classList.remove('show')
+//     gpt.classList.remove('hide')
 
-    $("#gpt, #other").val("");
-    $('#prediction').html(`
-    `)
+//     $("#gpt, #other").val("");
+//     $('#prediction').html(`
+//     `)
 
-    // Set Model State
-    showOther = false;
+//     // Set Model State
+//     showOther = false;
 
-  }
-}
+//   }
+// }
 
 // First Model (GPT-2)
 
@@ -121,7 +117,7 @@ $(gpt).keyup(async function () {
   let textToPredict = $(gpt).val()
 
   let predictions = {
-    pText: textToPredict
+    text: textToPredict
   }
 
   let res = await fetch('/api/predictGpt', {
@@ -138,21 +134,31 @@ $(gpt).keyup(async function () {
 
 // Second Model (Other)
 
-$(other).keyup(async function () {
-  let textToPredict = $(other).val()
+// $(other).keyup(async function () {
+//   let textToPredict = $(other).val()
 
-  let predictions = {
-    pText: textToPredict
+//   let predictions = {
+//     pText: textToPredict
+//   }
+
+//   let res = await fetch('/api/predictOther', {
+//     method: 'POST',
+//     body: JSON.stringify(predictions)
+//   })
+
+//   let prediction = await res.json()
+
+//   $('#prediction').html(`
+//   <em>${prediction['suggestions']}</em>
+//   `)
+// });
+
+document.getElementById('buttons')
+.addEventListener('click', event => { // Step 2
+  if (event.target.className === 'buttonClass') { // Step 3
+    $(gpt).val( $(gpt.val() + clickedWord) );
+    // console.log('Click!');s
   }
-
-  let res = await fetch('/api/predictOther', {
-    method: 'POST',
-    body: JSON.stringify(predictions)
-  })
-
-  let prediction = await res.json()
-
-  $('#prediction').html(`
-  <em>${prediction['suggestions']}</em>
-  `)
 });
+
+

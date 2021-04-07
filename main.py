@@ -52,21 +52,21 @@ async def messages(req):
 async def predict_results(req):
 
   values = req.json
-  prediction = predict(values['pText'])
+  prediction = predict(values['text'])
   # print(prediction)
 
   return res.json(prediction)
 
 # Do we need different URLS based on Model? Use variable at the end of URL?
 
-@app.post('/api/predictOther')
-async def predict_results(req):
+# @app.post('/api/predictOther')
+# async def predict_results(req):
 
-  values = req.json
-  prediction = predicts(values['pText'])
-  # print(prediction)
+#   values = req.json
+#   prediction = predicts(values['text'])
+#   # print(prediction)
 
-  return res.json(prediction)
+#   return res.json(prediction)
 
 app.static('/', './dist')
 
@@ -76,4 +76,5 @@ async def ignore_404s(request, exception):
 
 if __name__ == '__main__':
   # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-  app.run(host='localhost', port=int(os.environ.get("PORT", 5000)))
+  # app.run(host='localhost', port=int(os.environ.get("PORT", 5000)))
+  app.run(auto_reload=True, host='localhost', port=int(os.environ.get("PORT", 5000)))
