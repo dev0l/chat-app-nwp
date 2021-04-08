@@ -7,28 +7,15 @@ h1 {
   text-align: center;
 }
 
-#messages > div {
-  border: 1px solid gray;
+form {
   max-width: 350px;
-  padding: 5px;
+  display: grid;
+  grid-template-columns: 80px 1fr 40px;
+  column-gap: 5px;
   margin: auto;
-  margin-top: 10px;
 }
 
-#messages > div > p {
-  margin: 0;
-}
-
-#messages > div > p:first-child {
-  font-size: 0.8em;
-  color: gray;
-}
-
-#messages > div > p:last-child {
-  font-size: 1.2em;
-}
-
-/* form {
+/* .container {
   max-width: 350px;
   display: grid;
   grid-template-columns: 80px 1fr 40px;
@@ -49,7 +36,35 @@ input[type=text] {
   width: 100%;
 }
 
-input[type=submit] {
+/* input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
+} */
+
+.container #predictions {
+  width: 350px;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 10px 0 0 85px;
+}
+
+#messages > div {
+  border: 1px solid gray;
+  max-width: 350px;
+  padding: 5px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#messages > div > p {
+  margin: 0;
+}
+
+#messages > div > p:first-child {
+  font-size: 0.8em;
+  color: gray;
+}
+
+#messages > div > p:last-child {
+  font-size: 1.2em;
 }

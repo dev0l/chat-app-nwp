@@ -5,6 +5,7 @@ const newMessage = document.querySelector('.new-message')
 const switchBtn = document.querySelector('#switch-btn')
 const other = document.querySelector('#other')
 const gpt = document.querySelector('#gpt')
+const predictionsEl = document.querySelector('#predictions')
 let ws;
 
 _init()
@@ -73,7 +74,7 @@ form.addEventListener('submit', e => {
 
   newMessage.value = ''
 
-  $('#prediction').html(`
+  $('#predictions').html(`
   `)
 })
 
@@ -95,9 +96,30 @@ $(gpt).keyup(async function () {
 
   let prediction = await res.json()
 
-  $('#prediction').html(`
-  <em>${prediction['suggestions']}</em>
-  `)
+  // for (const prop in prediction) {
+  //   console.log(`prediction.${prop} = ${prediction[prop]}`);
+  // }
+
+  let wordArray = prediction.suggestions
+
+  let myHtml = "";
+
+  $.each(wordArray, function (i, item) {
+    myHtml += `<li class="clicked-word">${item}</li>`;
+  });
+
+  $("#predictions").html(myHtml);
+
+  const clickedWords = document.getElementsByClassName('clicked-word');
+  // console.log(clickedWords)
+  for (let clickedWord of clickedWords) {
+    clickedWord.addEventListener('click', () => {
+      // console.log(clickedWord.textContent)
+      let clickedWordVal = clickedWord.textContent
+      $(gpt).val($(gpt).val() + " " + clickedWordVal);
+    });
+  }
+
 });
 
 // Second Model (Other)

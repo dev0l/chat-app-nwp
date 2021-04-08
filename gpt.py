@@ -5,4 +5,5 @@ def predict(text):
   prediction = gpt2.predict_next(text, 5)
 
   result = {"suggestions": prediction}
+
   return result

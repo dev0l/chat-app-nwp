@@ -18,7 +18,7 @@ async def broadcast(message):
   # because the loop gets inconsistent if removing
   # an element while iterating
   for client in copy.copy(clients):
-    try: 
+    try:
       await client.send(message)
     except ConnectionClosed:
       # remove client from list if disconnected
@@ -53,7 +53,7 @@ async def predict_results(req):
 
   values = req.json
   prediction = predict(values['text'])
-  # print(prediction)
+  print(prediction)
 
   return res.json(prediction)
 
@@ -66,3 +66,4 @@ async def ignore_404s(request, exception):
 if __name__ == '__main__':
   # app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
   app.run(host='localhost', port=int(os.environ.get("PORT", 5000)))
+  # app.run(auto_reload=True, host='localhost', port=int(os.environ.get("PORT", 5000)))
