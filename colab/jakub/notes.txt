@@ -1,0 +1,8 @@
+python -m spacy download en_core_web_md
+
+spacy
+scikit-learn
+sklearn
+sklearn.utils
+pandas
+numpy
