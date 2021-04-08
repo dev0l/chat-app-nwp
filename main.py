@@ -6,7 +6,8 @@ import json
 import copy
 from database import get_messages, post_message
 from gpt import predict
-from other import predicts
+# from other import predicts
+from pred_final import make_prediction
 
 app = Sanic('app')
 
@@ -53,6 +54,15 @@ async def predict_results(req):
 
   values = req.json
   prediction = predict(values['text'])
+  print(prediction)
+
+  return res.json(prediction)
+
+@app.post('/api/predictSkip')
+async def predict_results(req):
+
+  values = req.json
+  prediction = make_prediction(values['text'])
   print(prediction)
 
   return res.json(prediction)

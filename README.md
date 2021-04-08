@@ -19,6 +19,7 @@ To deactivate venv:
 
 ### Dependencies:
 - py -m pip install -r requirements.txt
+- (py -m spacy download en_core_web_md)
 
 ### Run Application:
 - py main.py

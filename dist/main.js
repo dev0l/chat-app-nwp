@@ -3,8 +3,9 @@ const form = document.querySelector('form')
 const username = document.querySelector('#username')
 const newMessage = document.querySelector('.new-message')
 const switchBtn = document.querySelector('#switch-btn')
-const other = document.querySelector('#other')
+// const other = document.querySelector('#other')
 const gpt = document.querySelector('#gpt')
+let skip = document.querySelector('#skip')
 const predictionsEl = document.querySelector('#predictions')
 let ws;
 
@@ -124,21 +125,45 @@ $(gpt).keyup(async function () {
 
 // Second Model (Other)
 
-// $(other).keyup(async function () {
-//   let textToPredict = $(other).val()
+$(skip).keyup(async function () {
+  let textToPredict = $(skip).val()
 
-//   let predictions = {
-//     text: textToPredict
-//   }
+  let predictions = {
+    text: textToPredict
+  }
 
-//   let res = await fetch('/api/predictOther', {
-//     method: 'POST',
-//     body: JSON.stringify(predictions)
-//   })
+  let res = await fetch('/api/predictSkip', {
+    method: 'POST',
+    body: JSON.stringify(predictions)
+  })
 
-//   let prediction = await res.json()
+  let prediction = await res.json()
 
-//   $('#prediction').html(`
-//   <em>${prediction['suggestions']}</em>
-//   `)
-// });
+  for (const prop in prediction) {
+    console.log(`prediction.${prop} = ${prediction[prop]}`);
+  }
+
+  let wordArray = prediction.suggestions
+
+  let myHtml = "";
+
+  console.log(wordArray)
+
+  $.each(wordArray, function (i, item) {
+    console.log(item)
+    myHtml += `<li class="clicked-word">${item}</li>`;
+  });
+
+  $("#predictions").html(myHtml);
+
+  const clickedWords = document.getElementsByClassName('clicked-word');
+  // console.log(clickedWords)
+  for (let clickedWord of clickedWords) {
+    clickedWord.addEventListener('click', () => {
+      // console.log(clickedWord.textContent)
+      let clickedWordVal = clickedWord.textContent
+      $(skip).val($(skip).val() + " " + clickedWordVal);
+    });
+  }
+
+});
