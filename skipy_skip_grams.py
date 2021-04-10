@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.metrics.pairwise import euclidean_distances
+import random
 
-input_string = ""
 
 def fetch_model():
   global distance_matrix
@@ -15,6 +15,10 @@ def fetch_model():
   for i in range (1, len(words)):
     id2word[i] = words[i-1]
   word2id = dict([(value, key) for key, value in id2word.items()])
+
+def randomize_start_string():
+  rint = random.randint(0, len(words) -1)
+
 
 def give_similar(word, length):
   try:
