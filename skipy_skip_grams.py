@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.metrics.pairwise import euclidean_distances
 import random
 
-
 def fetch_model():
   global distance_matrix
   global id2word  
@@ -18,7 +17,6 @@ def fetch_model():
 
 def randomize_start_string():
   rint = random.randint(0, len(words) -1)
-
 
 def give_similar(word, length):
   try:

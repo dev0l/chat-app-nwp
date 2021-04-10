@@ -11,13 +11,10 @@ nlp = spacy.load("en_core_web_md")
 fetch_model()
 build_pos()
 
-### Methods:
-
-
-  
+### Methods:  
 
 def isWhitespace(string_input):
-  if string_input[-1] == " ":
+  if len(string_input) > 0 and string_input[-1] == " ":
     return True
   else:
     return False
@@ -96,6 +93,8 @@ def merge_predictions(start_list, long_list):
 
 #### Run:
 
+# string_input = " Skipy "
+
 def make_prediction(string_input):
   if isWhitespace(string_input):
     string_input = "filling words through " + string_input
@@ -116,4 +115,5 @@ def make_prediction(string_input):
 # myArray = make_prediction(" ")
 
 # print(myArray)
+
 # narrowed_list = verify_pos(long_list)  ----- turned of as it is too slow

@@ -167,5 +167,4 @@ $(skipy).keyup(async function () {
       newMessage.focus()
     });
   }
-
 });
