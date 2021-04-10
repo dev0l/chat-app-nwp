@@ -3,9 +3,8 @@ const form = document.querySelector('form')
 const username = document.querySelector('#username')
 const newMessage = document.querySelector('.new-message')
 const switchBtn = document.querySelector('#switch-btn')
-// const other = document.querySelector('#other')
 const gpt = document.querySelector('#gpt')
-let skip = document.querySelector('#skip')
+let skip = document.querySelector('#skipy')
 const predictionsEl = document.querySelector('#predictions')
 let ws;
 
@@ -57,7 +56,9 @@ function appendMessage(message) {
     <p>${new Date(message.time).toLocaleString()}</p>
     <p><strong>${message.sender}: </strong>${message.text}</p>
   `
-  messages.append(messageDiv)
+  // Changed to prepend instead of append to get messages in descending order
+  // i.e. the latest message in the top
+  messages.prepend(messageDiv)
 }
 
 form.addEventListener('submit', e => {
@@ -112,10 +113,8 @@ $(gpt).keyup(async function () {
   $("#predictions").html(myHtml);
 
   const clickedWords = document.getElementsByClassName('clicked-word');
-  // console.log(clickedWords)
   for (let clickedWord of clickedWords) {
     clickedWord.addEventListener('click', () => {
-      // console.log(clickedWord.textContent)
       let clickedWordVal = clickedWord.textContent
       $(gpt).val($(gpt).val() + " " + clickedWordVal);
     });
@@ -132,16 +131,16 @@ $(skip).keyup(async function () {
     text: textToPredict
   }
 
-  let res = await fetch('/api/predictSkip', {
+  let res = await fetch('/api/predictSkipy', {
     method: 'POST',
     body: JSON.stringify(predictions)
   })
 
   let prediction = await res.json()
 
-  for (const prop in prediction) {
-    console.log(`prediction.${prop} = ${prediction[prop]}`);
-  }
+  // for (const prop in prediction) {
+  //   console.log(`prediction.${prop} = ${prediction[prop]}`);
+  // }
 
   let wordArray = prediction.suggestions
 
@@ -157,10 +156,8 @@ $(skip).keyup(async function () {
   $("#predictions").html(myHtml);
 
   const clickedWords = document.getElementsByClassName('clicked-word');
-  // console.log(clickedWords)
   for (let clickedWord of clickedWords) {
     clickedWord.addEventListener('click', () => {
-      // console.log(clickedWord.textContent)
       let clickedWordVal = clickedWord.textContent
       $(skip).val($(skip).val() + " " + clickedWordVal);
     });

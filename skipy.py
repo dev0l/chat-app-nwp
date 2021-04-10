@@ -1,28 +1,22 @@
-from pred_skip_grams import fetch_model, give_similar, give_context_similar
-from pred_pos import build_pos, predict_pos
+from skipy_skip_grams import fetch_model, give_similar, give_context_similar
+from skipy_pos import build_pos, predict_pos
 import pandas as pd
 import spacy
 
-words_df = pd.read_csv("tags.csv")
-
+words_df = pd.read_csv("./datasets/tags.csv")
 
 nlp = spacy.load("en_core_web_md")
 
 fetch_model()
 build_pos()
 
-
-
 ### Methods:
-
 
 def isWhitespace(string_input):
   if string_input[-1] == " ":
     return True
   else:
     return False
-
-
 
 def analyze_string(string_input):
   words_typed = []
@@ -58,7 +52,6 @@ def check_spacy(word1, word0):
   #print(spacy_data)
   return spacy_data
 
-
 # def verify_pos(long_list):
 #   narrowed_list = []
 #   for i in range (0, 10000):
@@ -76,7 +69,6 @@ def start_pred(pos):
   start_list = start_list[:5]
   return start_list
 
-
 def merge_predictions(start_list, long_list):
   merged = []
   if long_list:
@@ -88,27 +80,17 @@ def merge_predictions(start_list, long_list):
     merged.append(start_list[:5])
   return merged
 
-
-
 #  select word from words
 #  where word is longlist[i]
 #  and pos is <int>
 #  order by frequency desc
-
 
 #### predict expected pos
 #### check give_context_similar for predicted pos
 #### take three suggestions with correct pos and one with incorrect
 #### take fifth suggestion from frequency database
 
-
-
-
-
 #### Run:
-
-
-
 
 def make_prediction(string_input):
   if isWhitespace(string_input):
@@ -122,12 +104,11 @@ def make_prediction(string_input):
     #print(skip_grams)
     merged = merge_predictions(basic, skip_grams)
     result = {"suggestions": merged}
-    # return merged
     return result
   else:
     print('there is nothing to predict')
 
 myArray = make_prediction(" ")
 
-print(myArray)
-  # narrowed_list = verify_pos(long_list)  ----- turned of as it is too slow
+# print(myArray)
+# narrowed_list = verify_pos(long_list)  ----- turned of as it is too slow

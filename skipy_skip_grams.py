@@ -7,7 +7,7 @@ def fetch_model():
   global distance_matrix
   global id2word  
   global word2id
-  df = pd.read_csv("data_words.csv")
+  df = pd.read_csv("./datasets/data_words.csv")
   weights = df.iloc[:, 1:].values
   distance_matrix = euclidean_distances(weights)
   words = df.iloc[:, 0].values
@@ -18,8 +18,13 @@ def fetch_model():
 
 def give_similar(word, length):
   try:
-    similar_words = {search_term: [id2word[idx] for idx in distance_matrix[word2id[search_term]-1].argsort()[1:length]+1] 
-                    for search_term in [word]}
+    similar_words = {
+      search_term: [
+        id2word[idx] 
+        for idx in distance_matrix[word2id[search_term]-1].argsort()[1:length]+1
+      ] 
+      for search_term in [word]
+    }
     #print(similar_words)               
     return similar_words
   except Exception:
@@ -60,7 +65,6 @@ def give_context_similar(string_input, length):
   
   #print(dict1)
 
-  
   if(dict1):
     values1 = dict1.values()
     values_list1 = list(values1)
