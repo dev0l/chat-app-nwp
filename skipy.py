@@ -1,4 +1,4 @@
-from skipy_skip_grams import fetch_model, give_similar, give_context_similar
+from skipy_skip_grams import fetch_model, give_similar, give_context_similar, randomize_start_string
 from skipy_pos import build_pos, predict_pos
 import pandas as pd
 import spacy
@@ -10,6 +10,7 @@ nlp = spacy.load("en_core_web_md")
 
 fetch_model()
 build_pos()
+randomize_start_string()
 
 ### Methods:  
 
@@ -97,7 +98,8 @@ def merge_predictions(start_list, long_list):
 
 def make_prediction(string_input):
   if isWhitespace(string_input):
-    string_input = "filling words through " + string_input
+    randword = randomize_start_string()
+    string_input = "www skipy " + randword + " " + string_input
     words_typed = analyze_string(string_input)
     spacy_data = check_spacy(words_typed[1], words_typed[0])
     pos = predict_pos(spacy_data[0], spacy_data[1], spacy_data[2], spacy_data[3], spacy_data[4])

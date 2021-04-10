@@ -17,6 +17,8 @@ def fetch_model():
 
 def randomize_start_string():
   rint = random.randint(0, len(words) -1)
+  rword = words[rint]
+  return rword
 
 def give_similar(word, length):
   try:
