@@ -108,9 +108,10 @@ def make_prediction(string_input):
     #print(skip_grams)
     merged = merge_predictions(basic, skip_grams)
     result = {"suggestions": merged}
-  return result
   else:
-    print('there is nothing to predict')
+    empty = []
+    result = {"suggestions": empty}
+  return result
 
 # myArray = make_prediction(" ")
 
