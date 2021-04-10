@@ -117,6 +117,7 @@ $(gpt).keyup(async function () {
     clickedWord.addEventListener('click', () => {
       let clickedWordVal = clickedWord.textContent
       $(gpt).val($(gpt).val() + " " + clickedWordVal);
+      newMessage.focus()
     });
   }
 
@@ -124,8 +125,13 @@ $(gpt).keyup(async function () {
 
 // Second Model (Other)
 
-$(skip).keyup(async function () {
-  let textToPredict = $(skip).val()
+// $( "#target" ).keypress(function( event ) {
+//   if ( event.which == 13 ) {
+//      event.preventDefault();
+//   }
+
+$(skipy).keyup(async function () {
+  let textToPredict = $(skipy).val()
 
   let predictions = {
     text: textToPredict
@@ -146,8 +152,6 @@ $(skip).keyup(async function () {
 
   let myHtml = "";
 
-  console.log(wordArray)
-
   $.each(wordArray, function (i, item) {
     console.log(item)
     myHtml += `<li class="clicked-word">${item}</li>`;
@@ -159,7 +163,8 @@ $(skip).keyup(async function () {
   for (let clickedWord of clickedWords) {
     clickedWord.addEventListener('click', () => {
       let clickedWordVal = clickedWord.textContent
-      $(skip).val($(skip).val() + clickedWordVal);
+      $(skipy).val($(skipy).val() + clickedWordVal);
+      newMessage.focus()
     });
   }
 

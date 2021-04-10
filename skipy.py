@@ -108,7 +108,7 @@ def make_prediction(string_input):
   else:
     print('there is nothing to predict')
 
-myArray = make_prediction(" ")
+# myArray = make_prediction(" ")
 
 # print(myArray)
 # narrowed_list = verify_pos(long_list)  ----- turned of as it is too slow
