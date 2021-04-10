@@ -159,7 +159,7 @@ $(skip).keyup(async function () {
   for (let clickedWord of clickedWords) {
     clickedWord.addEventListener('click', () => {
       let clickedWordVal = clickedWord.textContent
-      $(skip).val($(skip).val() + " " + clickedWordVal);
+      $(skip).val($(skip).val() + clickedWordVal);
     });
   }
 
