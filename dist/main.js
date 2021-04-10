@@ -4,8 +4,8 @@ const username = document.querySelector('#username')
 const newMessage = document.querySelector('.new-message')
 const switchBtn = document.querySelector('#switch-btn')
 const gpt = document.querySelector('#gpt')
-let skip = document.querySelector('#skipy')
-const predictionsEl = document.querySelector('#predictions')
+const skipy = document.querySelector('#skipy')
+const toggleBtn = document.querySelector('#switch-btn')
 let ws;
 
 _init()
@@ -117,7 +117,7 @@ $(gpt).keyup(async function () {
     clickedWord.addEventListener('click', () => {
       let clickedWordVal = clickedWord.textContent
       $(gpt).val($(gpt).val() + " " + clickedWordVal);
-      newMessage.focus()
+      gpt.focus()
     });
   }
 
@@ -164,7 +164,37 @@ $(skipy).keyup(async function () {
     clickedWord.addEventListener('click', () => {
       let clickedWordVal = clickedWord.textContent
       $(skipy).val($(skipy).val() + clickedWordVal);
-      newMessage.focus()
+      skipy.focus()
     });
   }
 });
+
+let showMenu = false;
+
+toggleBtn.addEventListener('click', toggleModel);
+
+function toggleModel() {
+  if(!showMenu) {
+    gpt.classList.add('show')
+    skipy.classList.add('hide')
+
+    // newMessage.value = ''
+
+    $('#predictions').html(`
+    `)
+
+    // Set Menu State
+    showMenu = true;
+  } else {
+    gpt.classList.remove('show')
+    skipy.classList.remove('hide')
+
+    // newMessage.value = ''
+
+    $('#predictions').html(`
+    `)
+
+    // Set Menu State
+    showMenu = false;
+  }
+}

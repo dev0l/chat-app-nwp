@@ -6,7 +6,7 @@ import json
 import copy
 from database import get_messages, post_message
 from gpt import predict
-from skipy import make_prediction
+from skipy import make_prediction, randword
 
 app = Sanic('app')
 
@@ -61,7 +61,7 @@ async def predict_results(req):
 async def predict_results(req):
 
   values = req.json
-  prediction = make_prediction(values['text'])
+  prediction = make_prediction(values['text'], randword)
   print(prediction)
 
   return res.json(prediction)

@@ -6,6 +6,7 @@ def fetch_model():
   global distance_matrix
   global id2word  
   global word2id
+  global words
   df = pd.read_csv("./datasets/data_words.csv")
   weights = df.iloc[:, 1:].values
   distance_matrix = euclidean_distances(weights)

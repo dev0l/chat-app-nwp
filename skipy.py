@@ -94,11 +94,10 @@ def merge_predictions(start_list, long_list):
 
 #### Run:
 
-# string_input = " Skipy "
+randword = randomize_start_string()
 
-def make_prediction(string_input):
+def make_prediction(string_input, randword):
   if isWhitespace(string_input):
-    randword = randomize_start_string()
     string_input = "www skipy " + randword + " " + string_input
     words_typed = analyze_string(string_input)
     spacy_data = check_spacy(words_typed[1], words_typed[0])
