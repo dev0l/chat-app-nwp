@@ -11,32 +11,26 @@
 </head>
 
 <body>
-  <h1 id="typewriter-logo">ChatApp!</h1>
-
   <div class="container">
+    <div class=lg-heading-wrapper>
+      <div class="typewriter">
+        <h1 class="lg-header">ChatApp!</h1>
+      </div>
+    </div>
+    <div id="toggle-model">
+      <button id="switch-btn">Toggle Model</button>
+      <span id="model-name">GPT-2</span>
+    </div>
+
     <form>
       <input id="username" type="text" autocomplete="off" placeholder="Name">
-      <input id="skipy" class="new-message" type="text" autocomplete="off" placeholder="Skipy: message..">
-      <input id="gpt" class="new-message" type="text" autocomplete="off" placeholder="GPT-2: message..">
+      <input id="new-message" class="gpt" type="text" autocomplete="off" placeholder="Message..">
       <button class="sendBtn">Send</button>
     </form>
 
     <ul id="predictions">
     </ul>
   </div>
-
-  <!-- <div class="container">
-    <form>
-      <input id="username" type="text" autocomplete="off" placeholder="name">
-      <input id="gpt" class="new-message" type="text" autocomplete="off" placeholder="GPT-2: message..">
-      <button class="sendBtn">Send</button>
-    </form>
-
-    <ul id="predictions">
-    </ul>
-  </div> -->
-
-  <button id="switch-btn">Toggle Model</button>
 
   <div id="messages"></div>
 

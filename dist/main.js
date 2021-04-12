@@ -1,11 +1,9 @@
 const messages = document.querySelector('#messages')
 const form = document.querySelector('form')
 const username = document.querySelector('#username')
-const newMessage = document.querySelector('.new-message')
-const switchBtn = document.querySelector('#switch-btn')
-const gpt = document.querySelector('#gpt')
-const skipy = document.querySelector('#skipy')
+const newMessage = document.querySelector('#new-message')
 const toggleBtn = document.querySelector('#switch-btn')
+const modelName = document.querySelector('#model-name')
 let ws;
 
 _init()
@@ -82,25 +80,34 @@ form.addEventListener('submit', e => {
 
 username.addEventListener('keyup', () => (localStorage['username'] = username.value))
 
-// First Model (GPT-2)
+$(newMessage).keyup(async function () {
+  let textToPredict = $(newMessage).val()
 
-$(gpt).keyup(async function () {
-  let textToPredict = $(gpt).val()
+  if ($(newMessage).val() == "") {
+    return;
+  }
 
   let predictions = {
     text: textToPredict
   }
 
-  let res = await fetch('/api/predictGpt', {
-    method: 'POST',
-    body: JSON.stringify(predictions)
-  })
+  let res;
+
+  if ($(this).hasClass('gpt')) {
+
+    res = await fetch('/api/predictGpt', {
+      method: 'POST',
+      body: JSON.stringify(predictions)
+    })
+  } else {
+
+    res = await fetch('/api/predictSkipy', {
+      method: 'POST',
+      body: JSON.stringify(predictions)
+    })
+  }
 
   let prediction = await res.json()
-
-  // for (const prop in prediction) {
-  //   console.log(`prediction.${prop} = ${prediction[prop]}`);
-  // }
 
   let wordArray = prediction.suggestions
 
@@ -116,85 +123,39 @@ $(gpt).keyup(async function () {
   for (let clickedWord of clickedWords) {
     clickedWord.addEventListener('click', () => {
       let clickedWordVal = clickedWord.textContent
-      $(gpt).val($(gpt).val() + " " + clickedWordVal);
-      gpt.focus()
+      $(newMessage).val($(newMessage).val() + clickedWordVal);
+      newMessage.focus()
     });
   }
 
 });
 
-// Second Model (Other)
-
-// $( "#target" ).keypress(function( event ) {
-//   if ( event.which == 13 ) {
-//      event.preventDefault();
-//   }
-
-$(skipy).keyup(async function () {
-  let textToPredict = $(skipy).val()
-
-  let predictions = {
-    text: textToPredict
-  }
-
-  let res = await fetch('/api/predictSkipy', {
-    method: 'POST',
-    body: JSON.stringify(predictions)
-  })
-
-  let prediction = await res.json()
-
-  // for (const prop in prediction) {
-  //   console.log(`prediction.${prop} = ${prediction[prop]}`);
-  // }
-
-  let wordArray = prediction.suggestions
-
-  let myHtml = "";
-
-  $.each(wordArray, function (i, item) {
-    console.log(item)
-    myHtml += `<li class="clicked-word">${item}</li>`;
-  });
-
-  $("#predictions").html(myHtml);
-
-  const clickedWords = document.getElementsByClassName('clicked-word');
-  for (let clickedWord of clickedWords) {
-    clickedWord.addEventListener('click', () => {
-      let clickedWordVal = clickedWord.textContent
-      $(skipy).val($(skipy).val() + clickedWordVal);
-      skipy.focus()
-    });
-  }
-});
-
-let showMenu = false;
+let showModel = false;
 
 toggleBtn.addEventListener('click', toggleModel);
 
 function toggleModel() {
-  if(!showMenu) {
-    gpt.classList.add('show')
-    skipy.classList.add('hide')
+  if (!showModel) {
+    $(modelName).html('Skipy')
+
+    newMessage.classList.remove('gpt')
 
     // newMessage.value = ''
 
-    $('#predictions').html(`
-    `)
+    $('#predictions').html('')
 
     // Set Menu State
-    showMenu = true;
+    showModel = true;
   } else {
-    gpt.classList.remove('show')
-    skipy.classList.remove('hide')
+    $(modelName).html('GPT-2')
+
+    newMessage.classList.add('gpt')
 
     // newMessage.value = ''
 
-    $('#predictions').html(`
-    `)
+    $('#predictions').html('')
 
     // Set Menu State
-    showMenu = false;
+    showModel = false;
   }
 }
