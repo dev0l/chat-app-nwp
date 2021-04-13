@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* body {
+  background-color: darkgrey;
+} */
+
+.lg-heading-wrapper {
+  text-align: center;
+  margin: 25px 0 25px 0;
+}
+
+.container {
+  max-width: 450px;
+  margin: auto;
+  /* background-color: white; */
+}
+
+#toggle-model {
+  margin-bottom: 10px;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+#send-btn {
+  width: 100%;
+  padding: 10px;
+}
+
+.container #predictions {
+  width: 450px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 10px 10px;
+}
+
+#messages > div {
+  border: 1px solid gray;
+  max-width: 450px;
+  padding: 5px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#messages > div > p {
+  margin: 0;
+}
+
+#messages > div > p:first-child {
+  font-size: 0.8em;
+  color: gray;
+}
+
+#messages > div > p:last-child {
+  font-size: 1.2em;
+}
+
+/* The switch - the box around the slider */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #ccc;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ccc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Typewriter Effect (Header) */
+
+.lg-heading-wrapper .typewriter .lg-heading {
+  /* color: #fff; */
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid black;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .1em;
+  /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; }
+  50% {
+    border-color: black; } }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatApp!</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class=lg-heading-wrapper>
+      <div class="typewriter">
+        <h1 class="lg-heading">ChatApp!</h1>
+      </div>
+    </div>
+    <div id="toggle-model">
+      <label class="switch">
+        <input id="switch-btn" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <span id="model-name">Model: GPT-2</span>
+    </div>
+
+    <form>
+      <input id="username" type="text" autocomplete="off" placeholder="Name">
+      <input id="new-message" class="gpt" type="text" list="predictions" autoComplete="off" placeholder="Message..">
+      <ul id="predictions">
+      </ul>
+      <button id="send-btn">Send</button>
+    </form>
+
+    <div id="messages"></div>
+
+  </div>
+
+  <!-- Scripts -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="./main.js"></script>
+
+</body>
+
+</html>
