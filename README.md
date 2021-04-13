@@ -22,7 +22,7 @@ To deactivate venv:
 
   (Please igonore the Tensorflow ERROR. Tensorflow is for model training purpose and is not required to run the application)
 
-- Only if needed: (py -m spacy download en_core_web_md)
+- Only if needed: py -m spacy download en_core_web_md
 
 ### Launch Server:
 - py main.py
