@@ -1,7 +1,7 @@
 # ChatApp!
 A chat application with nwp (next word prediction) using Python, Sanic, SQLite, Html, Css, Javascript
 
-### Use either python or py depending on your system:
+### Use either python or py depending on your environment:
 - py -m ...
 
 or
