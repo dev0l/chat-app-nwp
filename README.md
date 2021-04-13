@@ -20,8 +20,9 @@ To deactivate venv:
 ### Dependencies:
 - py -m pip install -r requirements.txt 
 
-(Please igonore the Tensorflow ERROR. Tensorflow is for model training purpose and is not required to run the application)
-- ONLY IF NEEDED! (py -m spacy download en_core_web_md)
+  (Please igonore the Tensorflow ERROR. Tensorflow is for model training purpose and is not required to run the application)
+
+- Only if needed: (py -m spacy download en_core_web_md)
 
 ### Launch Server:
 - py main.py
