@@ -14,25 +14,28 @@
   <div class="container">
     <div class=lg-heading-wrapper>
       <div class="typewriter">
-        <h1 class="lg-header">ChatApp!</h1>
+        <h1 class="lg-heading">ChatApp!</h1>
       </div>
     </div>
     <div id="toggle-model">
-      <button id="switch-btn">Toggle Model</button>
-      <span id="model-name">GPT-2</span>
+      <label class="switch">
+        <input id="switch-btn" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <span id="model-name">Model: GPT-2</span>
     </div>
 
     <form>
       <input id="username" type="text" autocomplete="off" placeholder="Name">
-      <input id="new-message" class="gpt" type="text" autocomplete="off" placeholder="Message..">
-      <button class="sendBtn">Send</button>
+      <input id="new-message" class="gpt" type="text" list="predictions" autoComplete="off" placeholder="Message..">
+      <ul id="predictions">
+      </ul>
+      <button id="send-btn">Send</button>
     </form>
 
-    <ul id="predictions">
-    </ul>
-  </div>
+    <div id="messages"></div>
 
-  <div id="messages"></div>
+  </div>
 
   <!-- Scripts -->
 
@@ -42,6 +45,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <script src="./main.js"></script>
+
 </body>
 
 </html>

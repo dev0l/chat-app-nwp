@@ -7,7 +7,7 @@ def fetch_model():
   global id2word  
   global word2id
   global words
-  df = pd.read_csv("./datasets/data_words.csv")
+  df = pd.read_csv("./dataset/data_words.csv")
   weights = df.iloc[:, 1:].values
   distance_matrix = euclidean_distances(weights)
   words = df.iloc[:, 0].values

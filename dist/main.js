@@ -136,7 +136,7 @@ toggleBtn.addEventListener('click', toggleModel);
 
 function toggleModel() {
   if (!showModel) {
-    $(modelName).html('Skipy')
+    $(modelName).html('Model: Skipy')
 
     newMessage.classList.remove('gpt')
 
@@ -147,7 +147,7 @@ function toggleModel() {
     // Set Menu State
     showModel = true;
   } else {
-    $(modelName).html('GPT-2')
+    $(modelName).html('Model: GPT-2')
 
     newMessage.classList.add('gpt')
 

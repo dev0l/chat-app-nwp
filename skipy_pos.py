@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 def build_pos():
   # load csv -> split to X,y -> split to train/test
-  dataset = pd.read_csv("./datasets/data_pos.csv")
+  dataset = pd.read_csv("./dataset/data_pos.csv")
   X = dataset.iloc[:, 1:-1].values
   y = dataset.iloc[:, -1].values
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)

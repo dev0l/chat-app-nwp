@@ -4,7 +4,7 @@ import pandas as pd
 import spacy
 import random
 
-words_df = pd.read_csv("./datasets/tags.csv")
+words_df = pd.read_csv("./dataset/tags.csv")
 
 nlp = spacy.load("en_core_web_md")
 

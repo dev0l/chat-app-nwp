@@ -53,7 +53,7 @@ async def predict_results(req):
 
   values = req.json
   prediction = predict(values['text'])
-  print(prediction)
+  # print(prediction)
 
   return res.json(prediction)
 
@@ -62,7 +62,7 @@ async def predict_results(req):
 
   values = req.json
   prediction = make_prediction(values['text'], randword)
-  print(prediction)
+  # print(prediction)
 
   return res.json(prediction)
 
